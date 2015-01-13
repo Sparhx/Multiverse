@@ -3,7 +3,7 @@ package Multiverse;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Player extends StartShip{
+public class Player extends StarShip{
 
 	protected Player(int px, int py, int size_w, int size_h, int hbox_x,
 			int hbox_y) {
@@ -12,7 +12,7 @@ public class Player extends StartShip{
 	}
 
 	@Override
-	public void action(ArrayList<StartShip> ships) {
+	public void action(ArrayList<StarShip> ships) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,90 +1,61 @@
 package Multiverse;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
-@SuppressWarnings("serial")
-public class Board extends JPanel implements ActionListener {
-	int second = 0, time = 0;
-	Timer timer;
-	Ennemie mechant;
-	ArrayList<StartShip> ships;
+public class Board {
 
-	public Board(Windows wind) {
+	private ArrayList<StarShip> m_ships;
+	private Color m_backColor;
 
-		ships = new ArrayList<StartShip>();
-		for (int i = 0; i < 10; i++) {
-			if (i % 2 == 0) {
-				mechant = new Ennemie(10, i * 100 % 500, 40, 20, 40, 20);
-				mechant.setSens(1);
-			} else {
-				mechant = new Ennemie(990, i * 100 % 500, 40, 20, 40, 20);
-				mechant.setSens(-1);
-			}
-			ships.add(mechant);
-		}
+	public Board() {
 
-		timer = new Timer(10, this);
-		timer.start();
-		this.setBackground(Color.black);
+		m_ships = new ArrayList<StarShip>();
+
 	}
 
-	public void clean(ArrayList<StartShip> ships) {
-		for (int i = 0; i < ships.size(); i++) {
-			if (ships.get(i).getLife() <= 0) {
-				if (ships.get(i) instanceof Player) {
-					gameOver();
+	public void addEnemy(int px, int py, double direct) {
+
+		EnemyTest m_badGuy = new EnemyTest(px, py, direct);
+		m_ships.add(m_badGuy);
+
+	}
+
+	public boolean clean() {
+		
+		for (int i = 0; i < m_ships.size(); i++) {
+			if (m_ships.get(i).getLife() <= 0) {
+				if (m_ships.get(i) instanceof Player) {
+					return true;
 				}
-				ships.remove(ships.get(i));
+				m_ships.remove(m_ships.get(i));
 			}
 		}
+		return false;
 	}
 
-	public void collide_board(ArrayList<StartShip> ships) {
+	public void collide_board(ArrayList<StarShip> ships) {
 		for (int i = 0; i < ships.size(); i++) {
 			ships.get(i).collide(ships);
 		}
 	}
 
-	public void action() {
-		for (int i = 0; i < ships.size(); i++) {
-			ships.get(i).action(ships);
+	public void action(int frame) {
+		for (int i = 0; i < m_ships.size(); i++) {
+			m_ships.get(i).action(m_ships);
 		}
-		collide_board(ships);
-		clean(ships);
+		collide_board(m_ships);
+		clean();
 	}
 
-	public void gameOver() {
+	public Color getBackColor() {return m_backColor;}
+	
+	public void setBackColor(Color color){m_backColor = color;}
 
-	}
+	public Player getPlayer() {return null;}
 
-	public int getTime() {
-		return second;
-	}
-
-	public void paint(Graphics g) {
-		super.paint(g);
-		for (int i = 0; i < ships.size(); i++) {
-			ships.get(i).draw(g);
-		}
-
-		g.setFont(new Font("sanssherif", Font.BOLD, 13));
-		g.setColor(Color.yellow);
-		g.drawString("TIME : " + String.valueOf(second), 10, 10);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		time++;
-		if (time % 100 == 0) {
-			second++;
-		}
-	}
+	public ArrayList<StarShip> getShips() {return m_ships;}
+	
 }
