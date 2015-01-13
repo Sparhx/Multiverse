@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class PiouPiou extends StartShip{
+public class PiouPiou extends StarShip{
 	
 	protected int who_shoot = 0;
 
@@ -21,7 +21,7 @@ public class PiouPiou extends StartShip{
 	}
 
 	
-	public void action(ArrayList<StartShip> ships) {
+	public void action(ArrayList<StarShip> ships) {
 		move();
 	}
 

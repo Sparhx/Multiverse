@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-public abstract class StartShip implements S_StartShip {
+public abstract class StarShip implements S_StarShip {
 
 	protected final int SIZE_W, SIZE_H, HBOX_X, HBOX_Y;
 	protected int vx, vy, x, y, sens = 1, index, life = 1, attack = 1;
@@ -12,7 +12,7 @@ public abstract class StartShip implements S_StartShip {
 	protected double direct = 0, v = 2;
 	protected boolean action_shoot = false, invulnerability = false;
 
-	protected StartShip(int px, int py, int size_w, int size_h, int hbox_x,
+	protected StarShip(int px, int py, int size_w, int size_h, int hbox_x,
 			int hbox_y) {
 		x = px;
 		y = py;
@@ -56,7 +56,7 @@ public abstract class StartShip implements S_StartShip {
 	}
 
 
-	public boolean collide(ArrayList<StartShip> ships) {
+	public boolean collide(ArrayList<StarShip> ships) {
 		for (int i = 0; i < ships.size(); i++) {
 			if (HBOX.intersects(ships.get(i).HBOX) && !ships.get(i).equals(this)) {
 				setLife(life - ships.get(i).attack);
@@ -74,7 +74,7 @@ public abstract class StartShip implements S_StartShip {
 		HBOX = new Rectangle(x - HBOX_X/2, y - HBOX_Y/2, HBOX_X, HBOX_Y);
 	}
 
-	public abstract void action(ArrayList<StartShip> ships);
+	public abstract void action(ArrayList<StarShip> ships);
 
 	public abstract void draw(Graphics g);
 }

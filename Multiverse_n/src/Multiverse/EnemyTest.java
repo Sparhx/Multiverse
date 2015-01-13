@@ -4,18 +4,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Ennemie extends StartShip{
+public class EnemyTest extends StarShip{
 	
-	protected static final int V = 8;
+	protected static final int V = 8 , LIFE = 10 , SIZE_H = 20 , SIZE_W = 20 , HBOX_W = 18, HBOX_H = 18;
+
 	
 	int t = 0;
 
-	protected Ennemie(int px, int py, int size_w, int size_h, int hbox_w, int hbox_h) {
-		super(px, py, size_w, size_h, hbox_w, hbox_h);
-		setLife(10);
+	public EnemyTest(int px, int py, double direct) {
+		super(px, py, SIZE_W, SIZE_H, HBOX_W, HBOX_H);
+		setLife(LIFE);
+		setV(V);
+		setDirect(direct);
 	}
 	
-	public void action(ArrayList<StartShip> ships) {
+	public void action(ArrayList<StarShip> ships) {
 		t ++;
 		action_shoot = false;
 		
@@ -31,10 +34,10 @@ public class Ennemie extends StartShip{
 		}	
 	}
 	
-	private void shoot(ArrayList<StartShip> ships){
+	private void shoot(ArrayList<StarShip> ships){
 		PiouPiou bullet = new PiouPiou(
-				(int) (x + Math.cos(direct)*this.sens*this.HBOX_X/2),
-				(int) (y + Math.sin(direct)*this.sens*this.HBOX_Y/2), 3, 3);
+				(int) (x + Math.cos(direct)*this.sens*this.HBOX_W/2),
+				(int) (y + Math.sin(direct)*this.sens*this.HBOX_H/2), 3, 3);
 		bullet.setSens(this.getSens());
 		bullet.setV(11);
 		bullet.setDirect(this.getDirect());
