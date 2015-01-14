@@ -12,7 +12,7 @@ public class Player extends StarShip{
 	}
 
 	@Override
-	public void action(ArrayList<StarShip> ships) {
+	public void action(ArrayList<StarShip> ships, int frame) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -11,5 +11,6 @@ public abstract class Stage {
 	public abstract void action(int frame);
 	
 	public Board getCurrentBoard(){return m_board;}
+	public Player getCurrentPlayer(){return m_player;}
 
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public interface S_StarShip {
 	
-	boolean collide(ArrayList<StarShip> ships);
-	void action(ArrayList<StarShip> ships);
+	void collide(ArrayList<StarShip> ships);
+	void action(ArrayList<StarShip> ships, int frame);
 	void draw(Graphics g);
 }
