@@ -48,7 +48,7 @@ public class EnemyTest extends StarShip {
 		if(RELOAD == 0) {
 			shoot(ships);
 		}
-		else if (action_shoot && m_frame % RELOAD == 0) {
+		else if (action_shoot && (m_frame % RELOAD == 0)) {
 			shoot(ships);
 		}
 	}

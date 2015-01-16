@@ -3,6 +3,7 @@ package Multiverse;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import Player.Player;
 import enemies.EnemyTest;
 
 public class Board {
@@ -19,7 +20,7 @@ public class Board {
 		EnemyTest m_badGuy = new EnemyTest(px, py, direct);
 		m_ships.add(m_badGuy);
 	}
-
+	
 	public boolean clean() {
 
 		for (int i = 0; i < m_ships.size(); i++) {
@@ -55,12 +56,14 @@ public class Board {
 		m_backColor = color;
 	}
 
-	public Player getPlayer() {
-		return null;
-	}
-
 	public ArrayList<StarShip> getShips() {
 		return m_ships;
 	}
+
+	public void setPlayer(Player player) {
+		if(!m_ships.contains(player))
+				m_ships.add(player);	
+	}
+
 
 }
