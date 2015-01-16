@@ -2,6 +2,8 @@ package Multiverse;
 
 import java.util.ArrayList;
 
+import Player.Player;
+
 public abstract class Stage {
 	
 	protected static ArrayList<Board> m_boards ;

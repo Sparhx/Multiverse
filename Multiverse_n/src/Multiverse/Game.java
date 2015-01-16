@@ -1,8 +1,8 @@
 package Multiverse;
 
-public class Game {
+public class Game  {
 
-	private final static int TIME = 1000;
+	private final static int TIME = 1000000;
 	private static int m_speed = 30;
  
 	private static View m_view;
@@ -10,8 +10,8 @@ public class Game {
 	private static StageTest m_stageTest = new StageTest();
 
 	public Game(View view) {
-		m_view = view;
 		m_stage= m_stageTest;
+		m_view = view;
 		run();
 	}
 
